@@ -1,10 +1,10 @@
 Rails.application.routes.draw do
-  root to: 'movies#index'
   resources :movies do
     resources :reviews, only: [:new, :create]
   end
   resources :users, only: [:new, :create]
   resources :sessions, only: [:new, :create, :destroy]
+  root to: 'movies#index'
 end
 
   # The priority is based upon order of creation: first created -> highest priority.
