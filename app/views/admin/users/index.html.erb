@@ -1,0 +1,10 @@
+<h1>this is views/admin/users/index.html.erb</h1>
+
+<h2>here is a list of all users </h2>
+<div>
+  <% User.all.each do |user| %>
+   <p>full name: <%= user.full_name %> </p>
+
+  <% end   %>
+
+</div>
