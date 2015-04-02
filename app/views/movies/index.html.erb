@@ -1,4 +1,9 @@
     <h1>Rotten Mangoes</h1>
+    <%= form_tag(movies_path, method: "get") do %>
+  <%= label_tag :q, "Search for:" %>
+  <%= text_field_tag :q, params[:q] %>
+  <%= submit_tag "Search", { name: nil } %>
+<% end %>
     <%= link_to "Submit a movie!", new_movie_path %>
     <hr>
     <% @movies.each do |movie| %>

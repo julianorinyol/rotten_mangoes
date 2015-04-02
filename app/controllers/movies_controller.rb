@@ -1,8 +1,8 @@
 class MoviesController < ApplicationController
 
   def index
-    @movies = Movie.all
-    
+    @movies = Movie.search(params[:q])
+    # @movies = Movie.look_for(params[:q])
   end
 
   def show

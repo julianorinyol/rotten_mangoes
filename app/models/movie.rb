@@ -11,6 +11,10 @@ class Movie < ActiveRecord::Base
   
   mount_uploader :image, ImageUploader
 
+  scope :look_for, ->(query) { where("title like ('%' || ? || '%')", query ) }
+
+  # scope :by_director, ->(name) { where(director: name) }
+
   def review_average
     if self.reviews.any?
 
@@ -19,6 +23,16 @@ class Movie < ActiveRecord::Base
       nil
     end
   end
+
+  def self.search(search)
+  if search
+    Movie.where("title like  ? ", "%#{search}%" ) 
+        # Movie.all
+    # find_by(:all, :conditions => ['name LIKE ?', "%#{search}%"])
+  else
+    Movie.all
+  end
+end
 
   protected
   def release_date_is_in_the_future
