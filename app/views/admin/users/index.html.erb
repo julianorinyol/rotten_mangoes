@@ -2,9 +2,11 @@
 
 <h2>here is a list of all users </h2>
 <div>
+  
+  <%= paginate @users  %>
+
   <% User.all.each do |user| %>
    <p>full name: <%= user.full_name %> </p>
 
-  <% end   %>
-
+  <% end %>
 </div>
