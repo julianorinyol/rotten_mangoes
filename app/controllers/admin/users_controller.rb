@@ -12,6 +12,7 @@ class Admin::UsersController < Admin::BaseController
     def create
         @user = User.new(admin_user_params)
     if @user.save
+      SystemMailer.welcome_email(@user).deliver
       redirect_to admin_users_path, notice: "you created, #{@user.firstname}!"
     else
       render :index
