@@ -11,7 +11,9 @@ class Movie < ActiveRecord::Base
   
   mount_uploader :image, ImageUploader
 
-  scope :look_for, ->(query) { where("title like ('%' || ? || '%')", query ) }
+  # scope :movie_by_title, ->(query) { where("title like ('%' || ? || '%')", query ) }
+  # scope :movie_by_director, ->(query) { where("title like ('%' || ? || '%')", query ) }
+  # scope :movie_by_runtime, ->(query) { where("title like ('%' || ? || '%')", query ) }
 
   # scope :by_director, ->(name) { where(director: name) }
 
@@ -24,14 +26,53 @@ class Movie < ActiveRecord::Base
     end
   end
 
-  def self.search(search)
-  if search
-    Movie.where("title like  ? ", "%#{search}%" ) 
-        # Movie.all
-    # find_by(:all, :conditions => ['name LIKE ?', "%#{search}%"])
-  else
-    Movie.all
-  end
+  def self.search(title = "", director = "", runtime_in_minutes = "")
+    # movie_by_title(title).movie_by_director(director)
+    
+    case runtime_in_minutes 
+      when "Under 90 minutes"
+        start = 0 
+        finish = 89
+      when "Between 90 and 120 minutes"
+        start = 90
+        finish = 119
+      when "Over 120 minutes"
+        start = 120
+        finish = 1000
+      when ""
+        start = 0
+        finish = 10000
+    end
+
+
+
+
+    # if runtime_in_minutes == "Under 90 minutes"
+    #   start = 0
+    #   finish = 89
+    # elsif runtime_in_minutes == "Between 90 and 120 minutes"
+    #   start = 90
+    #   finish = 119
+    # elsif runtime_in_minutes == "Over 120 minutes"
+    #   start = 120
+    #   finish = 1000                  
+    # else
+    #   start = 0
+    #   finish = 1000
+    # end   
+    Movie.where("title like ? AND director like ? AND  runtime_in_minutes > ? AND runtime_in_minutes < ? ", "%#{title}%", "%#{director}%", start, finish)
+
+  # if title
+  #   movie_by_title(title).movie_by_director(director)
+
+  #   # Movie.where("title like  ? ", "%#{title}%" ) 
+  # elsif director 
+
+  # elsif runtime_in_minutes
+
+  # else
+  #   Movie.all
+  # end
 end
 
   protected
