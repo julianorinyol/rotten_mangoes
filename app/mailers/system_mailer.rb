@@ -6,4 +6,10 @@ class SystemMailer < ApplicationMailer
     @url  = 'http://rottenmangoes.com/login'
     mail(to: @user.email, subject: 'Welcome to Rotten Mangoes')
   end
+
+  def farewell_email(user)
+    @user = user
+    # @url  = 'http://rottenmangoes.com/login'
+    mail(to: @user.email, subject: 'Welcome to Rotten Mangoes')
+  end 
 end

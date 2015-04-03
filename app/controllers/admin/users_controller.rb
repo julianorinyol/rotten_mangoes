@@ -41,6 +41,7 @@ class Admin::UsersController < Admin::BaseController
     def destroy
       @user = User.find(params[:id])
       @user.destroy
+      SystemMailer.farewell_email(@user).deliver
       redirect_to admin_users_path
     end
 
