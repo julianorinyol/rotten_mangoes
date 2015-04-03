@@ -1,26 +1,16 @@
-<h1>this is views/admin/users/index.html.erb</h1>
-<%= link_to "Create a user!", new_admin_user_path %>
-<%= link_to "Back to movie list!", movies_path %>
+<h1>Admin Page</h1>
+<div>
+  <%= link_to "Create a user!", new_admin_user_path%>
+</div>
+<div>
+  <%= link_to "Back to movie list!", movies_path %>
+</div>
 <h2>here is a list of all users </h2>
 <div>
   
   <%= paginate @users  %>
 
-  <% @users.each do |user| %>
-    <p>(<%= link_to "edit", edit_admin_user_path(user) %>, <%= link_to "delete", admin_user_path(user), method: :delete, data: { confirm: "You sure?" } %>, <%= "impliment log in as" %>)</p>
-  <h3>Name: <%= user.full_name %> </h3> 
-
-
-  <h4>Email: <%= link_to user.email, admin_user_path(user) %></h4>
-
-    <hr>
-
-
-  <% end %>
-
-  <%=  "edit users:"  %>
-
-
+  <%= render @users %>
 </div>
 
    
