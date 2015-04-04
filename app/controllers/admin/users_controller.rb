@@ -45,6 +45,11 @@ class Admin::UsersController < Admin::BaseController
       redirect_to admin_users_path
     end
 
+    def login_as(x)
+      @user = User.find(params[:id])
+      session[:user_id] = user.id
+      redirect_to movies_path, notice: "Welcome back, #{user.firstname}!"
+    end
 
     protected
 

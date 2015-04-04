@@ -11,7 +11,7 @@ class Movie < ActiveRecord::Base
   
   mount_uploader :image, ImageUploader
 
-  # scope :movie_by_title, ->(query) { where("title like ('%' || ? || '%')", query ) }
+  scope :movie_by_title, ->(query) { where("title like ('%' || ? || '%')", query ) }
   # scope :movie_by_director, ->(query) { where("title like ('%' || ? || '%')", query ) }
   # scope :movie_by_runtime, ->(query) { where("title like ('%' || ? || '%')", query ) }
 
@@ -30,21 +30,22 @@ class Movie < ActiveRecord::Base
     # movie_by_title(title).movie_by_director(director)
     
     case runtime_in_minutes 
-      when "Under 90 minutes"
+      when 2
         start = 0 
         finish = 89
-      when "Between 90 and 120 minutes"
+      when 3
         start = 90
         finish = 119
-      when "Over 120 minutes"
+      when 4
         start = 120
         finish = 1000
-      when ""
+      when 1
         start = 0
         finish = 10000
     end
 
 
+    Movie.where("title like ? AND director like ? AND  runtime_in_minutes > ? AND runtime_in_minutes < ? ", "%#{title}%", "%#{director}%", start, finish)
 
 
     # if runtime_in_minutes == "Under 90 minutes"
@@ -60,7 +61,6 @@ class Movie < ActiveRecord::Base
     #   start = 0
     #   finish = 1000
     # end   
-    Movie.where("title like ? AND director like ? AND  runtime_in_minutes > ? AND runtime_in_minutes < ? ", "%#{title}%", "%#{director}%", start, finish)
 
   # if title
   #   movie_by_title(title).movie_by_director(director)

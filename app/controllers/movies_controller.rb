@@ -2,9 +2,9 @@ class MoviesController < ApplicationController
 
   def index
     if params[:title] || params[:director] || params[:runtime_in_minutes]
-    @movies = Movie.search(params[:title], params[:director], params[:runtime_in_minutes])
+    @movies = Movie.search(params[:title], params[:director], params[:runtime_in_minutes]).page(params[:page]).per(10)
     else
-      @movies = Movie.all
+      @movies = Movie.all.page(params[:page]).per(10)
     end
   end
 

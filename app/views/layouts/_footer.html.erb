@@ -6,6 +6,9 @@
             you're an admin
          <%= link_to "Admin", admin_users_path %> 
              <%end%>
+              <% if session[:acting_as] %>
+         <%= link_to "Back to admin-mode", session_path("bla"), method: :delete %> 
+             <%end%>
         <% else %>
           <%= link_to "Log In", new_session_path %> | <%= link_to "Sign Up", new_user_path %>
         <% end %>

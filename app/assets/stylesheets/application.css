@@ -11,19 +11,9 @@
  * file per style scope.
  *
  *
+ *require bootstrap.min.css 
+ *require bootstrap-theme.min.css 
  *=require_tree .
- *=require bootstrap.min.css 
- *=require bootstrap-theme.min.css 
  *= require_self
  */
 
-body {
-  padding: 25px;
-}
-
-h3,h4 {
-  width: 30%;
-}
-
-hr {
-}
