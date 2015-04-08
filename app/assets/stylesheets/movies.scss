@@ -1,13 +1,69 @@
 // $movie-pad-color: hsla(245, 100%, 83%, .6);
 // $movie-text-pad-color: hsla(245, 100%, 83%, 1);
-$movie-pad-color: hsla(245, 100%, 83%, .1);
-$movie-text-pad-color: hsla(1, 100%, 100%, .7);
-$movie-text-color: hsla(1, 0%, 0%, 1);
 $font-stack:    Helvetica, sans-serif;
 $top-area-color: hsla(211, 52%, 50%, 0);
-$title-color: white;
+$title-color: black;
 $search-box-height: .5em;
 $search-text-font-size: 1em;
+$body-background-color: hsla(113, 61%, 24%, 1);
+
+// movie pads
+$movie-pad-color: hsla(0, 0%, 85%, 1);
+$movie-text-pad-color: hsla(0, 0%, 65%, 1);
+$movie-text-color: hsla(1, 100%, 100%, 1);
+// flat colors
+$flat-color1: #f1c40f;
+
+$colors: red, orange, yellow, green, blue, purple;
+
+@for $i from 1 through length($colors) {
+  .eachmovie:nth-child(#{length($colors)}n+#{$i}) {
+    background: lighten(nth($colors, $i), 20%);
+  }
+}
+
+
+
+// @mixin vendor-prefix($name, $argument) {
+//   -webkit-#{$name}: #{$argument};
+//   -ms-#{$name}: #{$argument};
+//   -moz-#{$name}: #{$argument};
+//   -o-#{$name}: #{$argument};
+//   #{$name}: #{$argument};
+// }
+// #sampleid {
+//   @include vendor-prefix(hyphens, auto)
+// }
+
+// @mixin background-gradient() {
+// background: #9bd1a3; /* Old browsers */
+// background: -moz-linear-gradient(-45deg, #9bd1a3 0%, #7cbc85 32%, #46844b 100%); /* FF3.6+ */
+// background: -webkit-gradient(linear, left top, right bottom, color-stop(0%,#9bd1a3), color-stop(32%,#7cbc85), color-stop(100%,#46844b)); Chrome,Safari4+
+// background: -webkit-linear-gradient(-45deg, #9bd1a3 0%,#7cbc85 32%,#46844b 100%); /* Chrome10+,Safari5.1+ */
+// background: -ms-linear-gradient(-45deg, #9bd1a3 0%,#7cbc85 32%,#46844b 100%); /* IE10+ */
+// background: linear-gradient(135deg, #9bd1a3 0%,#7cbc85 32%,#46844b 100%);
+// }
+
+
+// #fake-background {
+//   width: 100%;
+//   display: block;
+//   position: relative;
+// }
+
+// #fake-background::after {
+//   content: "";
+//   // background: url('rotten_mangoes.jpg');
+//   opacity: 0.6;
+//   top: 0;
+//   left: 0;
+//   bottom: 0;
+//   right: 0;
+//   position: absolute;
+//   z-index: -1;   
+// }
+
+
 
 .container:after {
   content:"";
@@ -23,7 +79,9 @@ html {
 }
 body {
   width: 100%;
-  background-image: url('rotten_mangoes.jpg');
+  // @include background-gradient;
+  background-color: white;
+  // background-image: url('rotten_mangoes.jpg');
 }
 
 
