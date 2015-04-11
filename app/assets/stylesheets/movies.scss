@@ -1,5 +1,3 @@
-// $movie-pad-color: hsla(245, 100%, 83%, .6);
-// $movie-text-pad-color: hsla(245, 100%, 83%, 1);
 $font-stack:    Helvetica, sans-serif;
 $top-area-color: hsla(211, 52%, 50%, 0);
 $title-color: black;
@@ -9,61 +7,18 @@ $body-background-color: hsla(113, 61%, 24%, 1);
 
 // movie pads
 $movie-pad-color: hsla(0, 0%, 85%, 1);
-$movie-text-pad-color: hsla(0, 0%, 65%, 1);
+$movie-text-pad-color: hsla(0, 0%, 50%, 1);
 $movie-text-color: hsla(1, 100%, 100%, 1);
 // flat colors
 $flat-color1: #f1c40f;
 
-$colors: red, orange, yellow, green, blue, purple;
+$colors: #c0392b, #9b59b6, #2c3e50, #d35400, #16a085, #27ae60;
 
 @for $i from 1 through length($colors) {
   .eachmovie:nth-child(#{length($colors)}n+#{$i}) {
     background: lighten(nth($colors, $i), 20%);
   }
 }
-
-
-
-// @mixin vendor-prefix($name, $argument) {
-//   -webkit-#{$name}: #{$argument};
-//   -ms-#{$name}: #{$argument};
-//   -moz-#{$name}: #{$argument};
-//   -o-#{$name}: #{$argument};
-//   #{$name}: #{$argument};
-// }
-// #sampleid {
-//   @include vendor-prefix(hyphens, auto)
-// }
-
-// @mixin background-gradient() {
-// background: #9bd1a3; /* Old browsers */
-// background: -moz-linear-gradient(-45deg, #9bd1a3 0%, #7cbc85 32%, #46844b 100%); /* FF3.6+ */
-// background: -webkit-gradient(linear, left top, right bottom, color-stop(0%,#9bd1a3), color-stop(32%,#7cbc85), color-stop(100%,#46844b)); Chrome,Safari4+
-// background: -webkit-linear-gradient(-45deg, #9bd1a3 0%,#7cbc85 32%,#46844b 100%); /* Chrome10+,Safari5.1+ */
-// background: -ms-linear-gradient(-45deg, #9bd1a3 0%,#7cbc85 32%,#46844b 100%); /* IE10+ */
-// background: linear-gradient(135deg, #9bd1a3 0%,#7cbc85 32%,#46844b 100%);
-// }
-
-
-// #fake-background {
-//   width: 100%;
-//   display: block;
-//   position: relative;
-// }
-
-// #fake-background::after {
-//   content: "";
-//   // background: url('rotten_mangoes.jpg');
-//   opacity: 0.6;
-//   top: 0;
-//   left: 0;
-//   bottom: 0;
-//   right: 0;
-//   position: absolute;
-//   z-index: -1;   
-// }
-
-
 
 .container:after {
   content:"";
@@ -75,7 +30,7 @@ $colors: red, orange, yellow, green, blue, purple;
 
 html {
   font-family: $font-stack;
-  font-size: 12px;
+  font-size: 16px;
 }
 body {
   width: 100%;
@@ -84,6 +39,155 @@ body {
   // background-image: url('rotten_mangoes.jpg');
 }
 
+a {
+  text-decoration: none;
+}
+
+#rotten-title {
+    // margin: 10px auto;
+    font-size: 2em;
+    width: 100%;
+    text-align: center;
+    display: inline-block;
+    color: $title-color;
+    margin: auto 0;
+}
+
+  #top-area {
+    background: $top-area-color;
+  }
+  #submit-a-movie {
+    a {
+        color: black;
+  /* width: 24px; */
+  float: left;
+  border: 1px solid black;
+  padding: 3px;
+  /* margin: 2px; */
+  position: relative;
+  bottom: 8px;
+  left: 22px;
+  border-radius: 5px;
+    }
+  }
+/*------------------------------- Portrait and Landscape for iphone 5 sized phone*/
+@media only screen 
+  // and (min-device-width: 320px) 
+  and (max-width: 700px)
+  // and (-webkit-min-device-pixel-ratio: 2) 
+  {
+
+  // Navbar area- Title + search bars + link
+
+
+
+
+  #rotten-title {
+      // width: 100%;
+      // text-align: center;
+      // margin: auto 0;
+      // font-size: 3em;
+  }
+
+  #submit-a-movie {
+    font-size: .8em;
+    a {
+      color: $title-color;
+    }
+    // float: left;
+  }
+
+  #search-form { 
+    display:none;
+    float: right;
+  }
+
+  #director, #runtime_in_minutes, #title {
+    height: $search-box-height;
+    width: 10%;
+    float: left;
+  }
+  #runtime_in_minutes {
+    height: 16px;
+  }
+
+  .search-words {
+    display: none;
+    float: left;
+    color: $title-color;
+    font-size: $search-text-font-size;
+    padding: 0 3px;
+  }
+
+  #search-button input {
+    display: none;
+    float: left;
+    height: 16px;
+    margin: 0 0 0 5px;
+  }
+
+  #horizontal-bar{
+    clear: both;
+  }
+
+  // main area - movies
+
+  .pagenumbers {
+    width: 30%;
+  }
+
+  .moviemovie{
+  }
+
+  .eachmovie {
+    width: 100%;  
+    border-radius: 30px;
+    float: left;
+    position: relative;
+    margin: 1.5%;
+    background: $movie-pad-color;
+    margin-bottom: 1px;
+    height: 25em;
+    overflow: hidden;
+    color: $movie-text-color;
+      img {
+        margin: 0 2% 0 0;
+        border-radius: 10px;
+        width: 120px;
+        top: 10px;
+        left: 10px;
+        position: absolute;
+      }
+      h2{
+        font-size: 1.7em;
+        margin: 0 0 3% 0;
+      }
+      h3{
+        font-size: .5em;
+      }
+      h4{
+        font-size: .7em;
+        margin: 2% 0 0 0;
+      }
+      a {
+        color: $movie-text-color;
+        float: right;
+      }
+      p{
+        font-size: 1em;
+        clear: both;
+        margin: 0 0 4% 0;
+      }
+  }
+
+  .movie-text {
+    width: 100%;
+    height: 100%;
+    padding: 10px 10px 10px 136px;
+    // background: $movie-text-pad-color;
+    // overflow: scroll;
+  }
+}
 
 
 @media only screen and (min-width: 701px) {
@@ -98,12 +202,16 @@ body {
     background: $top-area-color;
   }
 
-  #rotten-title {
-      // margin: 10px auto;
-      font-size: 2em;
+  // #rotten-title {
+  //     // margin: 10px auto;
+  //     font-size: 2em;
+  //     width: 500px;
+  //     display: inline-block;
+  //     color: $title-color;
+  //     margin: 1em 0 0 2em;
+  // }
+      #rotten-title {
       width: 500px;
-      display: inline-block;
-      color: $title-color;
       margin: 1em 0 0 2em;
   }
 
@@ -111,6 +219,7 @@ body {
     font-size: .8em;
     a {
       color: $title-color;
+
     }
     // float: left;
   }
@@ -118,7 +227,7 @@ body {
   #search-form { 
     width: 54%;
     float: right;
-    margin: 1.5em 0 0 0;
+    // margin: 58px 0 0 0;
   }
 
   #director, #runtime_in_minutes, #title {
@@ -196,177 +305,45 @@ body {
 
   .movie-text {
     float: right;
-    width: 64%;
+    width: 62%;
     height: 100%;
     margin: 0 0 ;
     padding: 1%;
     background: $movie-text-pad-color;
     // overflow: scroll;
   }
+}
 
 //  Big screens --------------------------     3 columns ----------------------------------------------------------
-  @media only screen 
-  and (min-width: 1200px) 
-  and (max-width: 1500px){
-
-    .eachmovie {
-      width: 30%;
-      margin: 1%;
-    }
-    .movie-text{
-      width: 60%;
-    }
-
-
-  }
-// mega big screens   -------------------4 columns -----------------------------------------------
-   @media only screen 
-  and (min-width: 1501px) {
-
-    .eachmovie {
-      width: 23%;
-      margin: .7%;
-    }
-    .movie-text{
-      width: 60%;
-
-    }
-
-  }
-
-}
-
-
-/* Portrait and Landscape for iphone 5 sized phone*/
 @media only screen 
-  // and (min-device-width: 320px) 
-  and (max-device-width: 700px)
-  // and (-webkit-min-device-pixel-ratio: 2) 
-  {
-
-    a {
-    text-decoration: none;
-  }
-  html {
-    font-size: 3em;
-  }
-
-  // Navbar area- Title + search bars + link
-
-  #top-area {
-    background: $top-area-color;
-  }
-
-  #rotten-title {
-      // margin: 10px auto;
-      font-size: 2em;
-      width: 100%;
-      text-align: center;
-      display: inline-block;
-      color: $title-color;
-      margin: auto 0;
-
-  }
-
-  #submit-a-movie {
-    font-size: .8em;
-    a {
-      color: $title-color;
-    }
-    // float: left;
-  }
-
-  #search-form { 
-    display:none;
-    float: right;
-  }
-
-  #director, #runtime_in_minutes, #title {
-    height: $search-box-height;
-    width: 10%;
-    float: left;
-  }
-  #runtime_in_minutes {
-    height: 16px;
-  }
-
-  .search-words {
-    display: none;
-    float: left;
-    color: $title-color;
-    font-size: $search-text-font-size;
-    padding: 0 3px;
-  }
-
-  #search-button input {
-    display: none;
-    float: left;
-    height: 16px;
-    margin: 0 0 0 5px;
-  }
-
-  #horizontal-bar{
-    clear: both;
-  }
-
-  // main area - movies
-
-  .pagenumbers {
-    width: 30%;
-  }
-
-  .moviemovie{
-  }
+and (min-width: 1200px) 
+and (max-width: 1500px){
 
   .eachmovie {
-    width: 100%;  
-    border-radius: 30px;
-    float: left;
-    margin: 1.5%;
-    background: $movie-pad-color;
-    margin-bottom: 1px;
-    height: 25em;
-    overflow: hidden;
-    color: $movie-text-color;
-      img {
-        margin: 0 2% 0 0;
-        border-radius: 10px;
-        height: 8em;
-        width: 6em  ;
-      }
-      h2{
-        font-size: 1.7em;
-        margin: 0 0 3% 0;
-      }
-      h3{
-        font-size: .5em;
-      }
-      h4{
-        font-size: .7em;
-        margin: 2% 0 0 0;
-      }
-      a {
-        color: $movie-text-color;
-        float: right;
-      }
-      p{
-        font-size: 1em;
-        clear: both;
-        margin: 0 0 4% 0;
-      }
+    width: 30%;
+    margin: 1%;
   }
-
-  .movie-text {
-    float: right;
-    width: 100%;
-    height: 100%;
-    margin: 0 0 ;
-    padding: 4px;
-    background: $movie-text-pad-color;
-    // overflow: scroll;
+  .movie-text{
+    width: 60%;
   }
+  #search-form{
+    margin: 58px 0 0 0;
+  }
+}
+// mega big screens   -------------------4 columns -----------------------------------------------
+ @media only screen 
+and (min-width: 1501px) {
 
+  .eachmovie {
+    width: 23%;
+    margin: .7%;
+  }
+  .movie-text{
+    width: 60%;
 
-
+  }
 
 }
+
+
+
