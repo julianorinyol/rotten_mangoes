@@ -69,8 +69,8 @@ a {
   padding: 3px;
   /* margin: 2px; */
   position: relative;
-  bottom: 8px;
-  left: 22px;
+  // bottom: 8px;
+  // left: 22px;
   border-radius: 5px;
     }
   }
@@ -334,6 +334,11 @@ and (max-width: 1500px){
     margin: 58px 0 0 0;
   }
 }
+#submit-a-movie {
+    a {
+        margin: 50px 0 0 0;
+    }
+  }
 // mega big screens   -------------------4 columns -----------------------------------------------
  @media only screen 
 and (min-width: 1501px) {
@@ -346,7 +351,12 @@ and (min-width: 1501px) {
     width: 60%;
 
   }
-
+  #submit-a-movie {
+    a {
+        margin: 50px 0 0 0;
+    }
+  }
+  
 }
 
 

@@ -7,7 +7,10 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       session[:user_id] = @user.id
-      SystemMailer.welcome_email(@user).deliver
+      # begin
+      #   SystemMailer.welcome_email(@user).deliver
+      #   rescue 
+      # end
       redirect_to movies_path, notice: "Welcome aboard, #{@user.firstname}!"
     else
       render :new
