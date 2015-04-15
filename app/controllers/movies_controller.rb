@@ -2,9 +2,15 @@ class MoviesController < ApplicationController
 
   def index
     if params[:title] || params[:director] || params[:runtime_in_minutes]
-    @movies = Movie.search(params[:title], params[:director], params[:runtime_in_minutes]).page(params[:page]).per(10)
+    
+      @movies = Movie.search(params[:title], params[:director], params[:runtime_in_minutes])
+    
+    # pagination, commented out as design changed, considering reimplementing
+    # @movies = Movie.search(params[:title], params[:director], params[:runtime_in_minutes]).page(params[:page]).per(10)
     else
-      @movies = Movie.all.page(params[:page]).per(10)
+      @movies = Movie.all
+      # pagination, commented out as design changed, considering reimplementing
+      # @movies = Movie.all.page(params[:page]).per(10)
     end
   end
 
@@ -17,8 +23,7 @@ class MoviesController < ApplicationController
   end
 
   def create
-    @movie = Movie.new(movie_params
-      )
+    @movie = Movie.new(movie_params)
     if @movie.save
       redirect_to movies_path, notice: "#{@movie.title} was submitted successfully!"
     else
@@ -50,7 +55,7 @@ class MoviesController < ApplicationController
 
   def movie_params
     params.require(:movie).permit(
-      :title, :release_date, :director, :runtime_in_minutes, :poster_image_url, :description, :image
+      :title, :release_date, :director, :runtime_in_minutes, :poster_image_url, :description, :image, :search_term
       )
   end
 end

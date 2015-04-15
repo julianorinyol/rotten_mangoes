@@ -1,0 +1,65 @@
+<div id='top-area'>    
+
+  <h1 id="rotten-title">Rotten Mangoes</h1>
+
+  <small id="session-links">
+    <% if current_user %>
+      Signed in as <%= current_user.full_name %> (<%= link_to "Log out", session_path("bla"), method: :delete %>)
+        <% if current_user.admin %>
+        you're an admin
+     <%= link_to "Admin", admin_users_path %> 
+         <%end%>
+          <% if session[:acting_as] %>
+     <%= link_to "Back to admin-mode", session_path("bla"), method: :delete %> 
+         <%end%>
+    <% else %>
+      <%= link_to "Log In", new_session_path %> | <%= link_to "Sign Up", new_user_path %>
+    <% end %>
+  </small>
+
+  <%= form_tag(movies_path, :id => 'simple-search-form', :class => 'container', method: "get") do %>
+      <%params[:title] = 'search' if !params[:title] || !params[:title] == ''   %>
+
+    <%= text_field_tag :title, params[:title] %>
+      
+    <%= submit_tag "Search", { name: nil } %>
+  <% end %>
+<!-- impliment advanced search if desirable. -->
+  <%= form_tag(movies_path, :id => 'search-form', :class => 'container', method: "get") do %>
+  
+  <span class="search-words">
+    <%= label_tag :title, "Search by title:" %>
+  </span>
+
+     
+  <div class = 'hide-me'>
+    
+    <span class="search-boxes">
+      <%= text_field_tag :title, params[:title] %>
+    </span>
+
+    <span class="search-words">
+      <%= label_tag :director, "Director:" %>
+    </span>
+
+    <span class="search-boxes">
+      <%= text_field_tag :director, params[:director] %>
+    </span>
+
+    <span class="search-words">
+      <%= label_tag :runtime_in_minutes, "runtime in minutes:" %>
+    </span>
+
+    <span class="search-boxes">
+      <%= select_tag :runtime_in_minutes, options_for_select([["", 1],["Under 90 minutes", 2],["Between 90 and 120 minutes", 3],["Over 120 minutes", 4]], params[:runtime_in_minutes]) %>
+    </span>
+  </div>
+    
+    <span id="search-button">
+      <%= submit_tag "Search", { name: nil } %>
+    </span>
+<% end %>
+    
+    <span id="submit-a-movie"><%= link_to "Submit a movie!",  new_movie_path %> </span>
+    <hr id='horizontal-bar'>
+</div>

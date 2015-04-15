@@ -7,6 +7,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       session[:user_id] = @user.id
+#to-do system mailer not configured properly for production environment 
       # begin
       #   SystemMailer.welcome_email(@user).deliver
       #   rescue 

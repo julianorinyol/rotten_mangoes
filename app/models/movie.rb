@@ -29,6 +29,7 @@ class Movie < ActiveRecord::Base
   def self.search(title = "", director = "", runtime_in_minutes = "")
     # movie_by_title(title).movie_by_director(director)
     
+
     case runtime_in_minutes 
       when 2
         start = 0 
@@ -44,8 +45,8 @@ class Movie < ActiveRecord::Base
         finish = 10000
     end
 
-
-    Movie.where("title like ? AND director like ? AND  runtime_in_minutes > ? AND runtime_in_minutes < ? ", "%#{title}%", "%#{director}%", start, finish)
+    Movie.where("title like ? or director like ?", "%#{title}%", "%#{title}%")
+    # Movie.where("title like ? AND director like ? AND  runtime_in_minutes > ? AND runtime_in_minutes < ? ", "%#{title}%", "%#{director}%", start, finish)
 
 
     # if runtime_in_minutes == "Under 90 minutes"
