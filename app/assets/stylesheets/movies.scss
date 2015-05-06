@@ -56,25 +56,46 @@ a {
     color: $title-color;
     margin: auto 0;
 }
-
+#search-icon {
+  
+  height: 18px;
+  width: 19px;
+  z-index: 5;
+}
+#icon-holder{
+  float: right;
+  margin: 2% 1% 0 0;
+}
+.hidden {
+  opacity: 0;
+}
   #top-area {
     background: $top-area-color;
+    border-bottom: 1px solid black;
+    height: 5.3em;
   }
   #submit-a-movie {
+    position: relative;
+    top: -3.5em;
+    right: -34%;
     a {
       color: black;
-      float: left;
+      // float: left;
       border: 1px solid black;
       padding: 3px;
-      margin: 38px 0 0 27px;
-      position: relative;
+      // margin: 38px 0 0 27px;
+    
       border-radius: 5px;
       font-size: 1.2em;
     }
   }
   #simple-search-form {
-    float:right;
-    margin: 2% 20% 0 0px;
+    // float:right;
+    // margin: 2% 20% 0 0px;
+      position: relative;
+      right: -56%;
+      top: -2em;
+      width: 23%;
 
     #title {
       width: 150px;
@@ -167,9 +188,6 @@ a {
     margin: 0 0 0 5px;
   }
 
-  #horizontal-bar{
-    clear: both;
-  }
 
   // main area - movies
 
@@ -239,9 +257,6 @@ a {
 
   // Navbar area- Title + search bars + link
 
-  #top-area {
-    background: $top-area-color;
-  }
 
   #rotten-title {
       margin: 1em 0 0 2em;
@@ -284,10 +299,6 @@ a {
     float: left;
     height: 16px;
     margin: 0 0 0 5px;
-  }
-
-  #horizontal-bar{
-    clear: both;
   }
 
   // main area - movies
