@@ -20,5 +20,6 @@ $(document).ready(function(){
   console.log('ready freddy')
   $('#search-icon').on('click', function(){
     console.log('search-icon click');
+    $('#simple-search-form').toggleClass('hidden')
   })
 })
