@@ -23,6 +23,7 @@ $colors: #c0392b, #9b59b6, #2c3e50, #d35400, #16a085, #27ae60;
 .movie-text {
   overflow-y: scroll;
   margin-right: -15px;
+  background-color: hsla(100, 100%, 100%, 0);
 }
 
 .container:after {
@@ -133,7 +134,7 @@ a {
     float: right;
     margin: 2% 4% 0 0;
   }
-/*------------------------------- Portrait and Landscape for iphone 5 sized phone*/
+/*------------------------------- Portrait and Landscape for iphone 5 sized phone----------------------------------------------*/
 @media only screen 
   // and (min-device-width: 320px) 
   and (max-width: 700px)
@@ -322,7 +323,7 @@ a {
     overflow: hidden;
     color: $movie-text-color;
       img {
-        margin: 4% 2% 0 4%;
+        margin: 12% 0% 0 8%;
         border-radius: 10px;
         height: 150px;
         width: 100px;
@@ -349,10 +350,10 @@ a {
 
   .movie-text {
     float: right;
+    background-color: hsla(100, 100%, 100%, 0);
     width: 62%;
     height: 100%;
     padding: 1%;
-    background: $movie-text-pad-color;
     // overflow: scroll;
   }
 }
