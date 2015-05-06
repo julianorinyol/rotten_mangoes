@@ -45,7 +45,7 @@ class Movie < ActiveRecord::Base
         finish = 10000
     end
 
-    Movie.where("title like ? or director like ?", "%#{title}%", "%#{title}%")
+    Movie.where("lower(title) like ? or lower(director) like ?", "%#{title}%", "%#{title}%")
     # Movie.where("title like ? AND director like ? AND  runtime_in_minutes > ? AND runtime_in_minutes < ? ", "%#{title}%", "%#{director}%", start, finish)
 
 

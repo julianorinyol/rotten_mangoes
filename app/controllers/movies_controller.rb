@@ -3,7 +3,7 @@ class MoviesController < ApplicationController
   def index
     if params[:title] || params[:director] || params[:runtime_in_minutes]
     
-      @movies = Movie.search(params[:title], params[:director], params[:runtime_in_minutes])
+      @movies = Movie.search(params[:title].downcase, params[:director], params[:runtime_in_minutes])
     
     # pagination, commented out as design changed, considering reimplementing
     # @movies = Movie.search(params[:title], params[:director], params[:runtime_in_minutes]).page(params[:page]).per(10)
