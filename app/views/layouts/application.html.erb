@@ -8,13 +8,12 @@
     </head>
     <body>
 
-      <div id="fake-background">
+      
         <% flash.each do |key, value| %>
           <%= content_tag(:div, value) %>
         <% end %>
         <%= render 'layouts/header' %>
         <%= yield %>
         <%= render 'layouts/footer' %>
-      </div>
     </body>
     </html>
